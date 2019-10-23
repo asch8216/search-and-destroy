@@ -1,10 +1,19 @@
 'use strict';
 
 //Complete this algo
-const isLoop = (linkedlist) => {
-
+const isLoop = linkedlist => {
+  let hashTable = {};
+  let SearchNode = linkedlist.head;
+  while (SearchNode) {
+    if (SearchNode.value in hashTable) {
+      return true;
+    } else {
+      hashTable[SearchNode.value] = true;
+      SearchNode = SearchNode.next;
+    }
+  }
+  return false;
 };
-
 
 /*
 EXTRA CREDIT:
@@ -14,4 +23,4 @@ This function should return the Node value the loop begins at
 Remember to write some test specs too!
 
 */
-module.exports = isLoop
+module.exports = isLoop;
